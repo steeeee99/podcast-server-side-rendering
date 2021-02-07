@@ -1,0 +1,25 @@
+<%- include('header',{title,message,loggedIn,creator}); %>
+<main class="top-56">
+    <h4 id='main-title' class='mx-3 mt-2'><%=title%></h4>
+
+<% if(research) {%>
+<%- include('research-form',{categories,typeResearch}); %>
+<% } %>
+
+<ul id="main-list" class="list-group mx-3">
+    <ul class="list-group">
+        <% for(let e of episodes){  %>
+            <%- include('episode-partial',{episode:e,created:false,loggedIn}); %>
+            <%}; %>
+        </ul>
+     
+</ul>
+</main>
+
+<% if(loggedIn){ %>
+<%- include('confirm-modal',{title:'Rimuovere dai preferiti?',confirmButtonType:"confirm-delete-favorites-button",modalID:'confirm-delete-favorites'}); %>
+<% }else{ %>
+    <%- include('login-button'); %>
+<% } %>
+
+<%- include('footer'); %>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <!-- Custom JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script defer src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <% if (title==='Modifica serie'){ %>
+      <script defer src="/javascripts/update-series.js"></script>
+    <%}%>
+
+    <% if (title==='Modifica episodio'){%>
+      <script defer src="/javascripts/update-episode.js"></script>
+      <%}%>
+      
+      <script defer src="/javascripts/alert.js"></script>
+    <%if (title==='Iscriviti'){ %>
+      <script defer src="/javascripts/signup.js"></script>
+    <% } %>
+      
+      <script defer src="/javascripts/research-form.js"></script>
+      
+      
+      <script defer src="/javascripts/delete-buttons.js"></script>
+      
+      
+      <script defer src="/javascripts/favorite-buttons.js"></script>
+      <script defer src="/javascripts/following-buttons.js"></script>
+       
+      
+      <script defer src="/javascripts/update-account-photo.js"></script>
+      
+      <script defer src="/javascripts/comments.js"></script>
+      
+      <script defer src="/javascripts/listen-buttons.js"></script>
+      
+      <script defer src="/javascripts/logout-button.js"></script>
+
+    <title>Podcast</title>
+  </head>
+  <body>
+    <header>
+        <nav class="navbar navbar-dark navbar-color d-flex <%= loggedIn ? 'justify-content-between' : 'justify-content-center' %> fixed-top">
+
+          <% if(loggedIn) { %>
+            
+            <button id="navbar-toggle" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebar-container" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button> <% } %>
+
+            <a class="navbar-brand height-40" href="/">
+                <svg height="30" viewBox="0 0 16 16" class="bi bi-earbuds pb-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M6.825 4.138c.596 2.141-.36 3.593-2.389 4.117a4.432 4.432 0 0 1-2.018.054c-.048-.01.9 2.778 1.522 4.61l.41 1.205a.52.52 0 0 1-.346.659l-.593.19a.548.548 0 0 1-.69-.34L.184 6.99c-.696-2.137.662-4.309 2.564-4.8 2.029-.523 3.402 0 4.076 1.948zm-.868 2.221c.43-.112.561-.993.292-1.969-.269-.975-.836-1.675-1.266-1.563-.43.112-.561.994-.292 1.969.269.975.836 1.675 1.266 1.563zm3.218-2.221c-.596 2.141.36 3.593 2.389 4.117a4.434 4.434 0 0 0 2.018.054c.048-.01-.9 2.778-1.522 4.61l-.41 1.205a.52.52 0 0 0 .346.659l.593.19c.289.092.6-.06.69-.34l2.536-7.643c.696-2.137-.662-4.309-2.564-4.8-2.029-.523-3.402 0-4.076 1.948zm.868 2.221c-.43-.112-.561-.993-.292-1.969.269-.975.836-1.675 1.266-1.563.43.112.561.994.292 1.969-.269.975-.836 1.675-1.266 1.563z"/>
+            </svg> Podcast
+            </a>
+            <% if(loggedIn) { %>
+            <a href='/users/account'>
+                <svg id="account-logo" height="40" viewBox="0 0 16 16" class="bi bi-person-circle navbar-brand mr-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+          </svg>
+            </a> <% } %>
+        </nav>
+
+      <div id="alert-message" class="top-56">
+        <% if(message) { %>
+          <div class="alert alert-<%=color%> alert-dismissible fade show" role="success">
+            <span><%= message %></span> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <% } %>
+      </div>
+    </header>
+
+
+    <container id="audio-player" class="top-56 mx-3 mt-3 navbar-color position-fixed fixed-top player-container d-none">
+      <div class="row mx-n1">
+      <button id="play-button" type="button" class="btn btn-lg button-player my-1 col-3 mx-0"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+      </svg></button>
+
+      <button id="pause-button" type="button" class="btn btn-lg button-player my-1 col-3 mx-0 d-none"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pause" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"/>
+      </svg></button>
+
+      <h6 id="player-title" class="player-title mt-3 pt-1 col-6 d-flex justify-content-center">Titolo episodio</h6>
+
+      <button id="close-player-button" type="button" class="btn btn-lg button-player col-3"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+        </svg></button>
+
+
+    </div>
+    </Container>
+
+    <sidebar class="collapse col-12" id="sidebar-container">
+      <div class="list-group pt-2" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action text-color <%= title==='Cerca serie' || title==='Cerca episodi' ? 'active' : ''%>" id="research" href="/">Cerca serie o episodi</a>
+                <% if(creator){ %>
+                  <a class="list-group-item list-group-item-action text-color <%= title==='Serie create' ? 'active' : ''%>" id="series-created" href="/created">Serie create</a>
+                <% } %>
+                  <a class="list-group-item list-group-item-action text-color <%= title==='Serie seguite' ? 'active' : ''%>" id="series-followed" href="/followed">Serie seguite</a>
+                <a class="list-group-item list-group-item-action text-color <%= title==='Episodi preferiti' ? 'active' : ''%>" id="favorite-episodes" href="/episodes/favorite">Episodi preferiti</a>
+            </div>
+            <hr>
+            <button id="logout-button" class="btn button-main-color text-color container-fluid btn-lg">Logout</button>
+    
+    
+    </sidebar>
+
+
+
+  

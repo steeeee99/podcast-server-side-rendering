@@ -1,0 +1,43 @@
+<%- include('header',{message:message,loggedIn:true,creator}); %>
+<main class="top-56">
+    <h4 id='main-title' class='mx-3 mt-2'><%=title%></h4>
+
+                    <form id="edit-series-form" class="col-12 mt-3" enctype="multipart/form-data" <%= add ? 'method=POST' : ''%> <%= add ? 'action=/created/new' : ''%>>
+    
+                        <div class="form-group">
+                            <input type="text" name="title" value="<%= series ? series.title : ''%>" <%= series ? 'disabled' : '' %> class="form-control form-control-lg" id="insert-title" aria-describedby="insert-title-feedback" placeholder="Inserisci titolo">
+                            <div id="insert-title-feedback" class="invalid-feedback">
+                                Inserisci un titolo valido.
+                            </div>
+                        </div>
+    
+                        <div class="form-group"> 
+                            <textarea rows="3" type="text" name="description" class="form-control form-control-lg" id="insert-description" aria-describedby="insert-description-feedback" placeholder="Inserisci descrizione"><%= series ? series.description : ''%></textarea>
+                            <div id="insert-description-feedback" class="invalid-feedback">
+                                Inserisci una descrizione valida
+                            </div>
+                        </div>
+    
+                        <div class="form-group">
+                            <input type="text" name="category" value="<%= series ? series.category : ''%>" <%= series ? 'disabled' : '' %> class="form-control form-control-lg" id="insert-category" aria-describedby="insert-category-feedback" placeholder="Inserisci categoria">
+                            <div id="insert-category-feedback" class="invalid-feedback">
+                                Inserisci una categoria valida
+                            </div>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="insert-img">Immagine serie</label>
+                            <input type="file" name="img" class="form-control-file" <%= series ? 'disabled' : '' %> accept="image/png,image/jpeg,image/jpg" aria-describedby="insert-img-feedback">
+                            <div id="insert-img-feedback" class="invalid-feedback">
+                                Attenzione campo obbligatorio
+                            </div>
+                        </div>
+    
+                        <button id="add-series-btn" type="submit" class="btn button-color container-fluid btn-lg"><%=title%></button>
+    
+                    </form>
+</main>
+
+<%- include('footer'); %>
+
+

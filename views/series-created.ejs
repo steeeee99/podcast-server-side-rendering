@@ -1,0 +1,36 @@
+<%- include('header',{title,message,color,loggedIn:true,creator}); %>
+
+<main class="top-56">
+    <h4 id='main-title' class='mx-3 mt-2'><%=title%></h4>
+
+<ul id="main-list" class="list-group mx-3">
+    <% for(let s of series){  %>
+        <li class="list-group-item mb-2">
+            <div class="container px-0">
+            <row class="row">
+                <div class="col-6 pl-2 pr-3">
+                    <a href="/<%=s.title%>/info"><img src="<%=s.url_img%>" alt="..." class="img-fluid rounded-circle"></a> 
+                </div>
+                <div class="col-6 px-3">
+                    <row class="row">
+                        <a href="/<%=s.title%>/info">
+                             <h5><%=s.title%></h5> 
+                         </a>
+                      </row>
+                      <row class="row"><span class="badge"><%=s.category%></span></row> 
+                      <%- include('edit-and-delete-buttons',{title:s.title}); %>
+                  </div>
+             </row>
+            </div>
+          </li>
+      <% }; %> 
+</ul>
+</main>
+
+<a  href="/created/new" class="btn button-main-color position-fixed btn-lg button-home">
+    Nuova serie
+</a>
+
+<%- include('confirm-modal',{title:'Cancellare la serie?',confirmButtonType:'confirm-delete-series-button',modalID:'confirm-delete-modal'}); %>
+
+<%- include('footer'); %>

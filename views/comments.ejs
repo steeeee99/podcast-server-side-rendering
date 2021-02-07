@@ -1,0 +1,31 @@
+
+
+    <div id="comments-list-<%=episodeId%>">
+    <% if(comments.length>0){ comments.forEach((c)=>{%>
+        <li class="list-group-item mb-2" id="<%=c.id%>">
+            <container class="<%= c.created ? 'd-flex justify-content-between' : ''%>">
+                <p><strong><%=c.author%></strong></p>
+                <% if(c.created) {%>
+                <button  type="button" data-id="<%=c.id%>" data-toggle="modal" data-target="#confirm-delete-comments" class="delete-comments btn btn-sm mt-n3 mr-n3" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                  </svg></button>
+            </container>
+            <% } %>
+            <hr class="mt-n2 mb-1">
+            <p class="mb-0"><%=c.comment%></p>
+        </li>
+    <% })}else{ %>
+        <li class="list-group-item noComments <%=loggedIn ? '' : 'mb-5'%>">
+            <p class="mb-0">Nessun commento</p>
+        </li>
+    <% } %>
+    </div>
+    <% if(loggedIn) { %>
+    <form class="add-comments-form py-0 mt-3" id="add-comments-form-<%=episodeId%>" data-id="<%=episodeId%>" method="POST" action="/episodes/<%=episodeId%>/comments"> 
+        <input type="text" name="series" value="<%=series%>" form="add-comments-form-<%=episodeId%>" class="d-none">
+        <textarea class="form-control form-lg container-fluid px-3" name="comment" form="add-comments-form-<%=episodeId%>" rows="2" type="text" placeholder="Aggiungi un commento"></textarea>
+        <button value="Submit" form="add-comments-form-<%=episodeId%>" class="btn btn-sm button-color float-right mt-2 mb-5 ">Commenta</button>
+    </form> <% } %>
+
+    
+

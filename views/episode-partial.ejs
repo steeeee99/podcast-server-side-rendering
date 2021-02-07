@@ -1,0 +1,46 @@
+
+<li class="list-group-item mb-2">
+
+    <h5 id="title-episode-<%=episode.id%>"><%=episode.title%></h5>
+    <p class="text-justify mb-2"><%=episode.description%></p> 
+
+    <p class="text-justify mb-2"><strong>Prezzo: </strong><%= (episode.price!==0 && episode.price) ? episode.price+' €' : 'Free' %></p>
+    <% if(episode.sponsor){ %>
+        <p class="text-justify mb-2"><strong>Sponsor: </strong><%=episode.sponsor%></p>
+        <% } %>
+        
+        <% if(created){%>
+            <a type="button" href="/episodes/<%=episode.id%>/edit" class="btn container-fluid btn-light mb-2">Modifica episodio</a>
+
+            <button type="button" data-id="<%=episode.id%>" data-toggle="modal" data-target="#confirm-delete-episode" class="delete-episode-buttons btn container-fluid btn-light mb-2">Elimina episodio</button>
+
+
+        <%}else{%>
+            
+                <% if(episode.purchased || episode.price===null || episode.price===0 || created){ %>
+                    <button type="button" data-id="<%=episode.id%>" class="listen-buttons btn container-fluid btn-light mb-2">Ascolta</button>
+                <% }else if(loggedIn) { %>
+                    <a href="/episodes/purchased/<%=episode.id%>/payment" type="button" class="purchase-buttons btn container-fluid button-color mb-2">Compra</a>
+                <% } %>
+                    
+                    <% if(loggedIn) { if (episode.favorite) { %>
+                        <button data-id="<%=episode.id%>" data-toggle="modal" data-target="#confirm-delete-favorites" type="button" class="delete-favorite-buttons btn btn-light container-fluid mb-2">Rimuovi dai preferiti</button>
+                    <%}else{%>
+                        <button data-id="<%=episode.id%>" type="button" class="add-favorite-buttons btn button-color container-fluid mb-2">Aggiungi ai preferiti</button>%>
+                    <%} } %>
+
+       <% }%>
+
+        
+                <% if (episode.series) { %>
+                    <a href="/<%=episode.series%>/info" type="button" class="btn button-color container-fluid"><%=episode.series%></a>
+               <% } else { %>
+                   <button data-target="#comments-container-<%=episode.id%>" data-toggle="collapse" type="button" class="btn button-color container-fluid">Commenti</button>
+               <% } %>
+</li>
+               
+                    
+
+
+                
+                    

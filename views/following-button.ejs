@@ -1,0 +1,4 @@
+<% if(series.following) {%>
+    <button type="button" data-id=<%=series.title%> data-toggle="modal" data-target="#confirm-unfollow" class="unfollow-buttons btn btn-light position-button-follow mr-2">Non seguire</button> 
+<% }else{ %>
+    <button type="button" data-id=<%=series.title%> class="follow-buttons btn button-color position-button-follow mr-2">Seguire</button> <% } %>
