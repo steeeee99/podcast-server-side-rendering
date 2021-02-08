@@ -55,6 +55,14 @@ exports.getFollowedSeries = function(username) {
             }
             if (rows === undefined || rows.length===0) resolve({ error: 'Nessuna serie seguita' });
 
+            rows = rows.map((row)=>({
+                title : row.title,
+                description : row.description,
+                url_img : row.url_img,
+                category : row.category,
+                author : row.author,
+                following : true,
+            }));
             resolve(rows);
         });
     });
