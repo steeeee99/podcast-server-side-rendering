@@ -1,5 +1,8 @@
 # podcast-server-side-rendering
 
+App-mobile only
+Html,Css,Bootrap,Nodejs, Express, bcrypt,sqlite
+
 Requisiti funzionali - descrizione
 Si vuole realizzare un’applicazione web per la gestione di podcast. In particolare, l’applicazione web deve supportare due tipi di utenti registrati: i creatori e gli ascoltatori.
 I creatori possono creare, modificare o cancellare una serie di podcast, nonché di aggiungere, modificare e cancellare i singoli episodi di una loro serie.
@@ -12,8 +15,6 @@ Prima di poter agire da ascoltatore, un utente del sito deve registrarsi ed eseg
 Un utente non registrato può, al di là di registrarsi come creatore o ascoltatore, navigare nell’intero sito liberamente e per categoria.
 Inoltre, può cercare una serie o un episodio con una ricerca testuale (nei titoli e nelle descrizioni). La ricerca testuale potrà essere raffinata per categoria o scegliendo tra episodi/serie. Per esempio, un utente potrà cercare “JavaScript” tra i soli titoli e descrizioni degli episodi nella categoria “Tecnologia”.
 Questa funzionalità è ovviamente offerta a tutti gli utenti del sito, anche a quelli non registrati.
-
-Html,Css,Bootrap,Nodejs, Express, bcrypt
 
 Utenti :
 Utente ascoltatore : 
